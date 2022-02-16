@@ -3,6 +3,8 @@ import { Routes, Route } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import Home from "./components/Home/Home.js";
 import "bootstrap/dist/css/bootstrap.min.css";
+import Navibar from "./components/NavBar";
+import FavList from './components/FavList.js';
 
 function App() {
   const [movies, setMovies] = useState();
@@ -41,17 +43,39 @@ function App() {
     fetchData();
   }, []);
 
+  const [favMovies, setFavMovies] = useState();
+
+  const fetchFavData = async () => {
+    try {
+      const response = await fetch(`${process.env.REACT_APP_SERVER}/getmovies`);
+
+      const data = await response.json();
+
+      setFavMovies(data);
+
+    } catch (error) {
+      console.log("error", error);
+    }
+  };
+    useEffect(() => {
+      fetchFavData();
+    }, []);
+
   return (
     <>
+    <Navibar/>
       <Routes>
         <Route
           path="/"
           element={<Home movies={movies} addComment={addComment} />}
         />
-        {/* <Route path="/trending" element={<TrendingList />} /> */}
-      </Routes>
-    </>
-  );
+        <Route  
+          path="/favorite"
+          element={<FavList/>}
+        />
+              </Routes>
+      </>
+      );
 }
 
 export default App;

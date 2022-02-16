@@ -45,8 +45,7 @@ function ModalMovie(props) {
                   : "Add Comment"
               }
             />
-          </Form.Group>
-          <Button
+            <Button
             className="addBtn"
             variant="primary"
             type="submit"
@@ -57,6 +56,8 @@ function ModalMovie(props) {
           <Button variant="secondary" onClick={props.handleColse}>
             Close
           </Button>
+          </Form.Group>
+          
         </Modal.Footer>
       </Modal>
     </>

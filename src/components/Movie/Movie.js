@@ -1,7 +1,24 @@
 import React from "react";
 import { Card, Button } from "react-bootstrap";
 
-function Movie(props) {
+export default function Movie(props) {
+
+
+
+  async function handleAddFav(e, movie){
+    e.preventDefault();
+   const dataToBeSent = {
+    title: movie.title,
+    release_date: movie.release_date,
+    poster_path: movie.poster_path,
+    overview: movie.overview,
+    comment: movie.comment
+   }}
+
+
+
+
+
   return (
     <>
       <div className="card-container" key={props.movie.id}>
@@ -22,13 +39,10 @@ function Movie(props) {
             >
               Show Modal
             </Button>
-            <Button variant="primary"> Add to Fav</Button>
+            <Button type="submit" variant="primary" onClick={(e)=>{handleAddFav(e,props.chosenMovie)} }>add to favorite</Button>
           </Card.Body>
         </Card>
       </div>
     </>
   );
 }
-
-export default Movie;
-// {`https://www.themoviedb.org/t/p/w600_and_h900_bestv2${props.movie.poster_path}`}
