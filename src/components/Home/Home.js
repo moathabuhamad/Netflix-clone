@@ -1,4 +1,4 @@
-import { Row, Container } from "react-bootstrap";
+
 import MovieList from "../MovieList/MovieList";
 
 function Home(props) {
@@ -7,11 +7,9 @@ function Home(props) {
       <h1>Home Page</h1>
       <main>
         {props.movies && (
-          <Container fluid className="main-container">
-            <Row className="flex-row">
+          <div className="main-container">
               <MovieList movies={props.movies} addComment={props.addComment} />
-            </Row>
-          </Container>
+          </div>
         )}
       </main>
     </>

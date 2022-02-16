@@ -8,7 +8,7 @@ function MovieList(props) {
   const [movie, setMovie] = useState();
   return (
     <>
-      <CardGroup style={{ display: "flex", justifyContent: "space-around" }}>
+      <div className="card-g">
         {props.movies.map((movie) => {
           return (
             <div key={movie.id}>
@@ -21,7 +21,7 @@ function MovieList(props) {
             </div>
           );
         })}
-      </CardGroup>
+      </div>
       {showModal && (
         <ModalMovie
           show={showModal}
